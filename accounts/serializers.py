@@ -12,10 +12,14 @@ class SigninSerializers(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField()
     
-class ResetPasswordSerializers(serializers.Serializer):
-    username = serializers.CharField()
+class ChangePasswordSerializers(serializers.Serializer):
+    old_password = serializers.CharField()
     new_password = serializers.CharField()
-    otp = serializers.CharField()
     
-class SendOtpSerializers(serializers.Serializer):
-    otp = serializers.CharField() 
+class RestPasswordSerializers(serializers.Serializer):
+    email =  serializers.EmailField()
+    otp = serializers.CharField()
+    new_password = serializers.CharField()
+
+class CreateOtpSerializers(serializers.Serializer):
+    username = serializers.CharField()
