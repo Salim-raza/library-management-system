@@ -9,11 +9,13 @@ from .serializers import *
 
 
 @api_view(["POST"])
+@permission_classes([IsAuthenticated])
+@authentication_classes([JWTAuthentication])
 def book_add(request):
     serializers =  BookAddUpdateDeleteSerializers(data=request.data)
     serializers.is_valid(raise_exception=True)
     serializers.save()
-    return Response({"message": "book add successfully!"}, status=status.HTTP_200_OK)
+    return Response({"message": "book add successfully!"}, status=status.HTTP_201_CREATED)
 
 
 @api_view(["PATCH"])
